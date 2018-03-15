@@ -30,9 +30,30 @@ def center_point(cluster):
 
 
 def dist_inter_cluster(cluster1, cluster2):
+    """Computes the distance of center points of two clusters.
+
+    Args:
+        cluster1, cluster2: An cluster = {x1, x2,..., xk}. xi is a row.
+
+    Returns:
+        A float number of average inter-cluster distance.
+    """
     center1 = center_point(cluster1)
     center2 = center_point(cluster2)
     distance = euclidean_dist(center1, center2)
     return distance
-    
 
+
+def dbi(cluster1, cluster2):
+    """Computes the Davies-Boudlin Index of two clusters.
+
+    Args:
+        cluster1, cluster2: An cluster = {x1, x2,..., xk}. xi is a row.
+
+    Returns:
+        A float number of Davies-Boudlin Index.
+    """
+    index = ((avg_dist_intra_cluster(cluster1) + 
+             avg_dist_intra_cluster(cluster2)) / 
+             dist_inter_cluster(cluster1, cluster2))
+    return index
