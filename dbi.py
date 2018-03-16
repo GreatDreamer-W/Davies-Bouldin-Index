@@ -35,7 +35,7 @@ def avg_dist_intra_cluster(cluster):
 
 
 def center_point(cluster):
-    center = np.sum(cluster, axis=0)
+    center = np.sum(cluster, axis=0) / cluster.shape[0]
     return center
 
 
